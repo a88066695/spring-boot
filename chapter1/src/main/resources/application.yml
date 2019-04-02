@@ -1,0 +1,4 @@
+server:
+  port: 8888 #将启动端口由 8080 修改为 8888
+  servlet:
+    context-path: /demo #将上下文路径修改为/demo

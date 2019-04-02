@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.demo.mapper.NoticeMapper">
+    <resultMap id="notice" type="com.boot.demo.entity.Notice">
+        <id column="id" property="id" javaType="string"/>
+        <result column="context" property="context" javaType="string"/>
+        <result column="sort" property="sort" javaType="int"/>
+        <result column="is_use" property="isUse" javaType="byte" />
+        <result column="create_time" property="createTime" javaType="java.util.Date"/>
+    </resultMap>
+    <select id="getList" resultMap="notice">
+        select
+          id,
+          context,
+          sort,
+          is_use,
+          create_time
+        FROM
+          t_notice
+    </select>
+
+    <insert id="insertNotice" parameterType="com.boot.demo.entity.Notice">
+        insert into t_notice
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="null != id and '' != id">
+                    id,
+                </if>
+                <if test="null != context and '' != context">
+                    context,
+                </if>
+                <if test="null != sort">
+                    sort,
+                </if>
+                <if test="null != isUse">
+                    is_use,
+                </if>
+                create_time
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="null != id and '' != id">
+                    #{id},
+                </if>
+                <if test="null != context and '' != context">
+                    #{context},
+                </if>
+                <if test="null != sort">
+                    #{sort},
+                </if>
+                <if test="null != isUse">
+                    #{isUse},
+                </if>
+                now()
+            </trim>
+    </insert>
+
+    <update id="updateNotice" parameterType="com.boot.demo.entity.Notice">
+        update t_notice
+        <set>
+            <if test="null != context and '' != context">
+                context = #{context},
+            </if>
+            <if test="null != sort">
+                sort = #{sort},
+            </if>
+            <if test="null != isUse">
+                is_use =#{isUse},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="removeNotice" parameterType="string">
+        delete from t_notice where id = #{id}
+    </delete>
+</mapper>

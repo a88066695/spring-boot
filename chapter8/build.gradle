@@ -1,0 +1,39 @@
+group 'spring-boot'
+version '1.0-SNAPSHOT'
+description '文件上传'
+
+buildscript {
+    ext {
+        springBootVersion = '2.1.3.RELEASE'
+    }
+
+    repositories {
+        maven {
+            url('http://maven.aliyun.com/nexus/content/groups/public')
+        }
+    }
+
+    dependencies {
+        //spring-boot提供的gradle插件
+        //用于spring的版本控制以及项目打包
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven {
+        url('http://maven.aliyun.com/nexus/content/groups/public')
+    }
+}
+
+dependencies{
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}

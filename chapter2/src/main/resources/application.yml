@@ -1,0 +1,7 @@
+my :
+  name : heheda
+  message : Hello
+
+spring:
+  profiles:
+    active: dev

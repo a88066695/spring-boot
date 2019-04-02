@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>上传文件</title>
+    </head>
+    <body>
+        <h2>上传文件</h2>
+        <form method="post" action="/upload/uploadFile" enctype="multipart/form-data">
+            <div>
+                <label>文件1:</label>
+                <input type="file" name="file"/>
+            </div>
+            <div>
+                <label>文件2:</label>
+                <input type="file" name="file"/>
+            </div>
+            <div>
+                <input type="submit" value="提交"/>
+            </div>
+        </form>
+
+        <h2>上传Base64文件</h2>
+        <form method="post" action="/upload/uploadBase64File">
+            <div>
+                <label>Base64:</label>
+                <textarea name="baseStr" rows="10" cols="80"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="提交"/>
+            </div>
+        </form>
+    </body>
+</html>

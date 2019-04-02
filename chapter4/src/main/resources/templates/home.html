@@ -1,0 +1,10 @@
+<!doctype html>
+<html>
+    <head>
+        <title>thymeleaf测试</title>
+    </head>
+    <body>
+       <h1 th:text="'Hello,' + ${info.username}">Hello,User!</h1>
+       Here is your message:<span th:text="${info.message}">xxx</span>
+    </body>
+</html>
